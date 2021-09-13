@@ -37,24 +37,27 @@
 			<div class="signup-box">
 				<h2 class="text-center">회원가입</h2>		
 				<br>
-				<form>
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="Username"/>
+						<input type="text" class="form-control" placeholder="아이디" id="idInput"/>
 					</div>
 					<div class="input-group mt-3">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="...."/>
+						<input type="password" class="form-control" placeholder="비밀번호" id="pwdInput"/>
 					</div>
-					<input type="text" class="form-control mt-3" placeholder="비밀번호 확인"/>
-					<input type="text" class="form-control mt-3" placeholder="이름"/>
-					<input type="text" class="form-control mt-3" placeholder="이메일 주소"/>
-					<input type="submit" class="btn btn-info btn-block mt-3" value="가입"/>
-				</form>
+					<div class="input-group mt-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="비밀번호 확인" id="pwdCheckInput"/>
+					</div>
+					<input type="text" class="form-control mt-3" placeholder="이름" id="nameInput"/>
+					<input type="text" class="form-control mt-3" placeholder="이메일 주소" id="emailInput"/>
+					<input type="button" class="btn btn-info btn-block mt-3" value="가입" id="registerBtn"/>
 			</div>
 		</section>
 		
@@ -63,6 +66,53 @@
 		</footer>
 		
 	</div>
+	
+<script>
+$(document).ready(function(){
+	
+	$("#registerBtn").on("click",function(){
+		
+		var id = $("#idInput").val().trim();
+		var pwd = $("#pwdInput").val().trim();
+		var pwdCheck = $("#pwdCheckInput").val().trim();
+		var name = $("#nameInput").val().trim();
+		var email = $("#emailInput").val().trim();
+	
+	if(id==null||id==""){
+		alert("아이디를 입력하세요.");
+		return;
+	}
+	if(pwd==null||pwd==""){
+		alert("비밀번호를 입력하세요.");
+		return;
+	}
+	if(pwdCheck==null||pwdCheck==""){
+		alert("비밀번호 확인을 입력하세요.");
+		return;
+	}
+	if(name==null||name==""){
+		alert("이름을 입력하세요.");
+		return;
+	}
+	if(email==null||email==""){
+		alert("이메일을 입력하세요.");
+		return;
+	}
+	});	
+	
+	$.ajax({
+		type:"post",
+		url:"/user/sign_up",
+		data:{"loginId":id,"password":pwd,"name":name,"email":email},
+		success:function(data){
+			alert();
+		},
+		error:function(e){
+			alert("error");
+		}
+	});
+});
+</script>
 
 </body>
 </html>

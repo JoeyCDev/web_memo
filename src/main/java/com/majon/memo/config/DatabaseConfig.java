@@ -1,25 +1,18 @@
-package com.majon.memo;
+package com.majon.memo.config;
 
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
-//@MapperScan(basePackages = "com.majon.memo*")
-@SpringBootApplication
-public class MemoApplication {
+@MapperScan(basePackages = "com.majon.memo*")
+public class DatabaseConfig {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MemoApplication.class, args);
-	}
-	
-	/* @Bean
+	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
@@ -29,7 +22,4 @@ public class MemoApplication {
 
         return sessionFactory.getObject();
     }
-    
-    */
-
 }

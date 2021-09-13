@@ -2,5 +2,6 @@ spring:
   mvc:
     static-path-pattern: /static/**
     view:
-      prefix: /WEB_INF/jsp/
+      prefix: /WEB-INF/jsp/
       suffix: .jsp
+      
