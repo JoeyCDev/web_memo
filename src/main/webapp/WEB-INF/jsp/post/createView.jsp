@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메모 게시판 - 로그인</title>
+<title>메모 입력</title>
 <!-- bootstrap CDN link -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -24,61 +24,53 @@
 
 <!-- styleshet -->
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
-</head>
 <body>
-
 	<div id="wrap">
-		
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-		
-		<section class="content d-flex justify-content-center align-items-center">
-			<div class="login-box">
-				<h2 class="text-center">로그인</h2>
-				<form id="loginForm">
-					<input type="text" class="form-control" placeholder="아이디를 입력하세요" id="loginIdInput" name="login"/>
-					<input type="password" class="form-control mt-3" placeholder="비밀번호를 입력하세요" id="passwordInput" name="password"/>
-					<input type="submit" class="btn btn-info btn-block mt-3" value="로그인"/>
-				</form>
-				<div class="text-right mt-2">
-					<a href="/user/signup_view">회원가입</a>
+		<section class="d-flex justify-content-center">
+			<div class="w-75 my-4">
+				<h1 class="text-center">메모 입력</h1>
+				
+				<div class="d-flex my-3">
+				<label class="mr-2">제목 : </label>
+				<input type="text" class="form-control col-11" id="titleInput">
+				</div>
+				<textarea class="form-control my-3" rows="5" id="contentInput"></textarea>
+				<input type="file">
+
+				<div class="d-flex justify-content-between my-3">
+					<button type="button" class="btn btn-info">목록으로</button>
+					<button type="button" class="btn btn-success" id="saveBtn">저장</button>
 				</div>
 			</div>
 		</section>
-		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
-		
 	</div>
-	
+
 	<script>
-		$(document).ready(function(){
-			$("#loginForm").on("submit",function(e){
-				
-				e.preventDefault();
-				
-				var loginId = $("#loginIdInput").val();
-				var password = $("#passwordInput").val();
-				
-				if(loginId==null || loginId==""){
-					alert("아이디를 입력해주세요");
-					return;
-				}
-				
-				if(password==null || password==""){
-					alert("비밀번호를 입력해주세요");
-					return;
-				}
+	$(document).ready(function(){
+		$("#saveBtn").on("click",function(){
+			var title = $("#titleInput").val();
+			var content = $("#contentInput").val().trim();
 			
+			if(title==null||title==""){
+				alert("제목을 입력하세요");
+				return;
+			}
+			if(content==null||content==""){
+				alert("내용을 입력하세요");
+				return;
+			}
 			
 			$.ajax({
 				type:"post",
-				url:"/user/sign_in",
-				data:{"loginId":loginId, "password":password},
+				url:"/post/create",
+				data:{"subject":title, "content" :content},
 				success:function(data){
-					if(data.result=="success"){
-						alert("로그인 성공");	
-						location.href="/user/signin_view";
+					if(data.result == "success"){
+						alert("삽입성공");
 					}else{
-						alert("아이디 비밀번호를 확인해주세요");
+						alert("삽입실패");
 					}
 				},
 				error:function(e){
@@ -86,7 +78,7 @@
 				}
 			});
 		});
-		});
+	});
 	</script>
 
 </body>

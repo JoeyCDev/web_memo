@@ -59,6 +59,7 @@ public class UserRestController {
 		// 셀렉트 결과가 있다
 		if(user != null) {
 			HttpSession session = request.getSession();
+			session.setAttribute("userId", user.getId());
 			session.setAttribute("userLoginId", user.getLoginId());
 			session.setAttribute("userName", user.getName());
 			
