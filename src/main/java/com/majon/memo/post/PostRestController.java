@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +19,7 @@ import com.majon.memo.post.bo.PostBO;
 @RestController
 @RequestMapping("/post")
 public class PostRestController {
-
+	
 	@Autowired
 	private PostBO postBO;
 	
@@ -43,6 +44,51 @@ public class PostRestController {
 		}
 		
 		return resultMap;
+		
+	}
+	
+	@GetMapping("/delete")
+	public Map<String, String> delete(@RequestParam("postId") int postId
+			, HttpServletRequest request) {
+	
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		
+		Map<String, String> result = new HashMap<>();
+		int count = postBO.deleteMemo(postId, userId);
+		
+		if(count == 0) {
+			result.put("result", "fail");
+		} else {
+			result.put("result", "success");
+		}
+		
+		return result;
+		
+	}
+	
+	@PostMapping("/update")
+	public Map<String, String> update(
+			@RequestParam("postId") int postId
+			, @RequestParam("subject") String subject
+			, @RequestParam("content") String content
+			, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		Map<String, String> result = new HashMap<>();
+		
+		int count = postBO.updateMemo(postId, subject, content, userId);
+		
+		if(count == 0) {
+			result.put("result", "fail");
+		} else {
+			result.put("result", "success");
+		}
+		
+		return result;
 		
 	}
 	

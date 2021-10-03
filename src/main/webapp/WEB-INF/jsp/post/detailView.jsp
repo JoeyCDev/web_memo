@@ -20,69 +20,71 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		<section class="d-flex justify-content-center">
 			<div class="w-75 my-4">
-				<h1 class="text-center">메모 입력</h1>
+				<h1 class="text-center">메모</h1>
 				
 				<div class="d-flex my-3">
 					<label class="mr-3">제목 : </label>
-					<input type="text" class="form-control col-11" id="titleInput">
+					<input type="text" class="form-control col-11" id="titleInput" value="${memo.subject }">
 				</div>
-				<textarea class="form-control my-3" rows="5" id="contentInput"></textarea>
-				<!-- MIME text/html image/jpeg  -->
-				<input type="file" accept="image/*" id="fileInput">
+				<textarea class="form-control my-3" rows="5" id="contentInput">${memo.content }</textarea>
+				<img src="${memo.imagePath }">
 				<div class="d-flex justify-content-between my-3">
-					<a href="/post/list_view" class="btn btn-info">목록으로</a>
-					<button type="button" class="btn btn-success" id="saveBtn">저장</button>
+					<div>
+						<a href="/post/list_view" class="btn btn-info">목록으로</a>
+						<button type="button" class="btn btn-danger" id="deleteBtn" data-post-id="${memo.id }">삭제</button>
+					</div>
+					<button type="button" class="btn btn-success" id="updateBtn" data-post-id="${memo.id }">수정</button>
 				</div>
 			</div>
 			
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
+	
 	<script>
 	$(document).ready(function() {
-		$("#saveBtn").on("click", function() {
-			var title = $("#titleInput").val();
-			var content = $("#contentInput").val().trim();
-			
-			if(title == null || title == "") {
-				alert("제목을 입력하세요");
-				return ;
-			}
-			
-			if(content == null || content == "") {
-				alert("내용을 입력하세요");
-				return ;
-			}
-			
-			var formData = new FormData();
-			formData.append("subject", title);
-			formData.append("content", content);
-			formData.append("file", $("#fileInput")[0].files[0]);
+		$("#deleteBtn").on("click", function() {
+			var postId = $(this).data("post-id");
 			
 			$.ajax({
-				enctype:"multipart/form-data",  // 파일업로드 필수
-				processData:false, // 파일업로드 필수
-				contentType:false, // 파일업로드 필수 
-				type:"post",
-				url:"/post/create",
-				data:formData,
+				type:"get",
+				url:"/post/delete",
+				data:{"postId":postId},
 				success:function(data) {
 					if(data.result == "success") {
-						location.href="/post/list_view"
+						location.href="/post/list_view";
 					} else {
-						alert("삽입실패");
+						alert("삭제실패");
 					}
-					
 				},
 				error:function(e) {
 					alert("error");
 				}
 			});
+		});
+		
+		$("#updateBtn").on("click", function() {
+			var postId = $(this).data("post-id");
 			
+			$.ajax({
+				type:"post",
+				url:"/post/update",
+				data:{"postId":postId, "subject":$("#titleInput").val(), "content":$("#contentInput").val()},
+				success:function(data) {
+					if(data.result == "success") {
+						alert("수정 성공");
+					} else {
+						alert("수정 실패");
+					}
+				},
+				error:function(e) {
+					alert("error");
+				}
+				
+			});
 		});
 	});
 	
 	</script>
-	
 </body>
 </html>
