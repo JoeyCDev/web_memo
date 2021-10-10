@@ -24,4 +24,8 @@ https://docs.google.com/spreadsheets/d/1DQm-Nb13JNZHo3If4FvSvTCbLKjVF4W_GFEzoKXa
   - package: https://github.com/joseph58080/web_memo/tree/master/src/main/java/com/majon/memo/post
   - view: https://github.com/joseph58080/web_memo/blob/master/src/main/webapp/WEB-INF/jsp/post/detailView.jsp
 ### 데모 :video_camera:
-:star: 회원가입/로그인
+:star: 회원가입/로그인 ![memo_sign](https://user-images.githubusercontent.com/55569244/136695486-fe975507-fada-43d5-956c-7a9526cbb82f.gif)
+:star: 메모 작성 ![memo_write](https://user-images.githubusercontent.com/55569244/136695501-1f65d350-178c-414a-9960-ad1213861bdc.gif)
+:star: 메모 상세화면 수정/삭제 ![memo_detail](https://user-images.githubusercontent.com/55569244/136695518-d638947a-d0c2-4249-9306-452f8ca3016e.gif)
+
+
