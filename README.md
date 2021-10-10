@@ -27,5 +27,12 @@ https://docs.google.com/spreadsheets/d/1DQm-Nb13JNZHo3If4FvSvTCbLKjVF4W_GFEzoKXa
 :star: 회원가입/로그인 ![memo_sign](https://user-images.githubusercontent.com/55569244/136695486-fe975507-fada-43d5-956c-7a9526cbb82f.gif)
 :star: 메모 작성 ![memo_write](https://user-images.githubusercontent.com/55569244/136695501-1f65d350-178c-414a-9960-ad1213861bdc.gif)
 :star: 메모 상세화면 수정/삭제 ![memo_detail](https://user-images.githubusercontent.com/55569244/136695518-d638947a-d0c2-4249-9306-452f8ca3016e.gif)
-
+### 외부 라이브러리 라이센스 :book:
+- Tomcat https://www.apache.org/licenses/LICENSE-2.0
+- MySql https://www.gnu.org/licenses/gpl-3.0.html
+- Spring Framework https://www.apache.org/licenses/LICENSE-2.0
+- Mybatis https://www.apache.org/licenses/LICENSE-2.0
+- Bootstrap https://opensource.org/licenses/MIT
+- jQuery https://opensource.org/licenses/MIT
+- 이미지 출처 https://pixabay.com/ko/
 
