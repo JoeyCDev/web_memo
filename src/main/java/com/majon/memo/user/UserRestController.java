@@ -55,8 +55,6 @@ public class UserRestController {
 		
 		Map<String,String>resultMap = new HashMap<>();
 		
-		// 셀렉트 결과가 있냐 없냐?
-		// 셀렉트 결과가 있다
 		if(user != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("userId", user.getId());

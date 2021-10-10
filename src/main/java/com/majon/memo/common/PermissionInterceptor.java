@@ -16,10 +16,8 @@ public class PermissionInterceptor implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
 		
-		//로그인 상태에 따른 접근 권한 관리
 		HttpSession session = request.getSession();
 		
-		//현재 요청한 uri 알아오기
 		String uri = request.getRequestURI();
 		
 		// 비로그인

@@ -27,7 +27,7 @@
 					<input type="text" class="form-control col-11" id="titleInput" value="${memo.subject }">
 				</div>
 				<textarea class="form-control my-3" rows="5" id="contentInput">${memo.content }</textarea>
-				<img src="${memo.imagePath }">
+				<img src="${memo.imagePath }" height="500px" width="500px">
 				<div class="d-flex justify-content-between my-3">
 					<div>
 						<a href="/post/list_view" class="btn btn-info">목록으로</a>

@@ -12,16 +12,11 @@ public class EncryptUtils {
 		
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
-			// 1byte = 8bit = 10101011
-			// asdf -> a = 64 = 1000000
-			// [1000000, 1010100, 1000101, 1010111]
 			byte[] bytes = message.getBytes();
 			md.update(bytes);
 			
 			byte[] digest = md.digest();
-			// byte -> 16진수 -> 문자열
 			for(int i=0; i< digest.length; i++) {
-				// 67abe
 				encData += Integer.toHexString(digest[i] & 0xff);
 			}
 			

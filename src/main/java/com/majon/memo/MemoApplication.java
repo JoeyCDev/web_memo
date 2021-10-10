@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
-//@MapperScan(basePackages = "com.majon.memo*")
 @SpringBootApplication
 public class MemoApplication {
 
@@ -19,17 +18,4 @@ public class MemoApplication {
 		SpringApplication.run(MemoApplication.class, args);
 	}
 	
-	/* @Bean
-	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-        SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource);
-
-        Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mappers/*Mapper.xml");
-        sessionFactory.setMapperLocations(res);
-
-        return sessionFactory.getObject();
-    }
-    
-    */
-
 }

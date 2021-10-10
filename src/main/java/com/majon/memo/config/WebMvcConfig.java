@@ -17,8 +17,6 @@ public class WebMvcConfig implements WebMvcConfigurer{
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		// 서버(내 컴퓨터) 의 특정 위치의 파일들을
-		// 내가 정한 url path로 접근하게 하는 설정
 		
 		registry.addResourceHandler("/images/**") // /images/3_32342342/test.png
 		
@@ -29,7 +27,7 @@ public class WebMvcConfig implements WebMvcConfigurer{
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(permissionInterceptor)
-		.addPathPatterns("/**") //어느 path의 접근을 낚아 챌지
+		.addPathPatterns("/**") 
 		.excludePathPatterns("/static/**", "/user/sign_out");
 	}
 	

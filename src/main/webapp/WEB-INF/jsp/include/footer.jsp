@@ -9,7 +9,7 @@
 <body>
 
 <footer class="bg-secondary text-light text-center">
-			© 2021. memo Co. all rights reserved.
+			© 2021. memo. all rights reserved.
 		</footer>
 
 </body>

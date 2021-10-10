@@ -15,7 +15,6 @@ public class UserBO {
 	
 	public int insertUser(String loginId, String password, String name, String email) {
 		// password 암호화
-		
 		String encryptPassword = EncryptUtils.md5(password);
 		
 		

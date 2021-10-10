@@ -27,7 +27,7 @@
 					<input type="text" class="form-control col-11" id="titleInput">
 				</div>
 				<textarea class="form-control my-3" rows="5" id="contentInput"></textarea>
-				<!-- MIME text/html image/jpeg  -->
+				
 				<input type="file" accept="image/*" id="fileInput">
 				<div class="d-flex justify-content-between my-3">
 					<a href="/post/list_view" class="btn btn-info">목록으로</a>

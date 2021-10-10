@@ -18,10 +18,8 @@ public class PostBO {
 	public int addPost(int userId, String subject, String content, MultipartFile file) {
 		
 		String imagePath = null;
-		// 파일이 있을경우에만 저장 로직 진행
 		if(file != null) {
-			imagePath = FileManagerService.saveFile(userId, file);
-			// saveFile에서 파일 저장에 실패 한경우 
+			imagePath = FileManagerService.saveFile(userId, file); 
 			if(imagePath == null) {
 				return 0;
 			}
